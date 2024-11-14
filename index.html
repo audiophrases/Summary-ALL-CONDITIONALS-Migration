@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Conditionals (Immigration)</title>
+    <style>
+      /* Styles */
+      .title {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .title-l2 {
+        font-size: 28px;
+        font-weight: bold;
+      }
+      .title-l1 {
+        font-size: 18px;
+        color: gray;
+      }
+      .l2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 15px;
+      }
+      .l1 {
+        font-size: 18px;
+        color: gray;
+        margin-bottom: 15px;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      .audio-section {
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .audio-player {
+        display: inline-block;
+        width: 100%;
+        max-width: 600px;
+      }
+      .controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .controls button,
+      .controls select {
+        background-color: #f0f0f0;
+        border: none;
+        margin: 0 5px;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .controls button:hover,
+      .controls select:hover {
+        background-color: #e0e0e0;
+      }
+      .progress {
+        width: 100%;
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+      }
+      .progress input[type="range"] {
+        flex-grow: 1;
+      }
+      .time {
+        font-size: 14px;
+        margin-left: 10px;
+        width: 70px;
+        text-align: right;
+      }
+      .audio-container {
+        display: none; /* Hidden by default */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Title Rows -->
+    <div class="title">
+      <div class="title-l2">Conditionals (Immigration)</div>
+      <div class="title-l1">Condicionals (Immigració)</div>
+    </div>
+
+    <!-- Audio Players -->
+
+    <div class="audio-section audio-container" id="audioContainer1">
+      <div class="audio-player">
+        <audio id="audio1" src="1.mp3"></audio>
+        <div class="controls">
+          <button onclick="rewind('audio1')">« 5s</button>
+          <button onclick="playPause('audio1')" id="playPauseBtn1">Play</button>
+          <button onclick="skip('audio1')">5s »</button>
+          <select onchange="changeSpeed('audio1', this.value)">
+            <option value="0.5">0.5x</option>
+            <option value="0.75">0.75x</option>
+            <option value="0.85">0.85x</option>
+            <option value="0.90">0.90x</option>
+            <option value="0.95">0.95x</option>
+            <option value="1" selected>1x</option>
+          </select>
+        </div>
+        <div class="progress">
+          <input type="range" id="progressBar1" value="0" step="0.1" min="0" max="100" onchange="seek('audio1', this.value)">
+          <div class="time" id="time1">0:00 / 0:00</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="audio-section audio-container" id="audioContainer2">
+      <div class="audio-player">
+        <audio id="audio2" src="2.mp3"></audio>
+        <div class="controls">
+          <button onclick="rewind('audio2')">« 5s</button>
+          <button onclick="playPause('audio2')" id="playPauseBtn2">Play</button>
+          <button onclick="skip('audio2')">5s »</button>
+          <select onchange="changeSpeed('audio2', this.value)">
+            <option value="0.5">0.5x</option>
+            <option value="0.75">0.75x</option>
+            <option value="0.85">0.85x</option>
+            <option value="0.90">0.90x</option>
+            <option value="0.95">0.95x</option>
+            <option value="1" selected>1x</option>
+          </select>
+        </div>
+        <div class="progress">
+          <input type="range" id="progressBar2" value="0" step="0.1" min="0" max="100" onchange="seek('audio2', this.value)">
+          <div class="time" id="time2">0:00 / 0:00</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="audio-section audio-container" id="audioContainer3">
+      <div class="audio-player">
+        <audio id="audio3" src="3.mp3"></audio>
+        <div class="controls">
+          <button onclick="rewind('audio3')">« 5s</button>
+          <button onclick="playPause('audio3')" id="playPauseBtn3">Play</button>
+          <button onclick="skip('audio3')">5s »</button>
+          <select onchange="changeSpeed('audio3', this.value)">
+            <option value="0.5">0.5x</option>
+            <option value="0.75">0.75x</option>
+            <option value="0.85">0.85x</option>
+            <option value="0.90">0.90x</option>
+            <option value="0.95">0.95x</option>
+            <option value="1" selected>1x</option>
+          </select>
+        </div>
+        <div class="progress">
+          <input type="range" id="progressBar3" value="0" step="0.1" min="0" max="100" onchange="seek('audio3', this.value)">
+          <div class="time" id="time3">0:00 / 0:00</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="audio-section audio-container" id="audioContainer4">
+      <div class="audio-player">
+        <audio id="audio4" src="4.mp3"></audio>
+        <div class="controls">
+          <button onclick="rewind('audio4')">« 5s</button>
+          <button onclick="playPause('audio4')" id="playPauseBtn4">Play</button>
+          <button onclick="skip('audio4')">5s »</button>
+          <select onchange="changeSpeed('audio4', this.value)">
+            <option value="0.5">0.5x</option>
+            <option value="0.75">0.75x</option>
+            <option value="0.85">0.85x</option>
+            <option value="0.90">0.90x</option>
+            <option value="0.95">0.95x</option>
+            <option value="1" selected>1x</option>
+          </select>
+        </div>
+        <div class="progress">
+          <input type="range" id="progressBar4" value="0" step="0.1" min="0" max="100" onchange="seek('audio4', this.value)">
+          <div class="time" id="time4">0:00 / 0:00</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="audio-section audio-container" id="audioContainer5">
+      <div class="audio-player">
+        <audio id="audio5" src="5.mp3"></audio>
+        <div class="controls">
+          <button onclick="rewind('audio5')">« 5s</button>
+          <button onclick="playPause('audio5')" id="playPauseBtn5">Play</button>
+          <button onclick="skip('audio5')">5s »</button>
+          <select onchange="changeSpeed('audio5', this.value)">
+            <option value="0.5">0.5x</option>
+            <option value="0.75">0.75x</option>
+            <option value="0.85">0.85x</option>
+            <option value="0.90">0.90x</option>
+            <option value="0.95">0.95x</option>
+            <option value="1" selected>1x</option>
+          </select>
+        </div>
+        <div class="progress">
+          <input type="range" id="progressBar5" value="0" step="0.1" min="0" max="100" onchange="seek('audio5', this.value)">
+          <div class="time" id="time5">0:00 / 0:00</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="audio-section audio-container" id="audioContainer6">
+      <div class="audio-player">
+        <audio id="audio6" src="6.mp3"></audio>
+        <div class="controls">
+          <button onclick="rewind('audio6')">« 5s</button>
+          <button onclick="playPause('audio6')" id="playPauseBtn6">Play</button>
+          <button onclick="skip('audio6')">5s »</button>
+          <select onchange="changeSpeed('audio6', this.value)">
+            <option value="0.5">0.5x</option>
+            <option value="0.75">0.75x</option>
+            <option value="0.85">0.85x</option>
+            <option value="0.90">0.90x</option>
+            <option value="0.95">0.95x</option>
+            <option value="1" selected>1x</option>
+          </select>
+        </div>
+        <div class="progress">
+          <input type="range" id="progressBar6" value="0" step="0.1" min="0" max="100" onchange="seek('audio6', this.value)">
+          <div class="time" id="time6">0:00 / 0:00</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="audio-section audio-container" id="audioContainer7">
+      <div class="audio-player">
+        <audio id="audio7" src="7.mp3"></audio>
+        <div class="controls">
+          <button onclick="rewind('audio7')">« 5s</button>
+          <button onclick="playPause('audio7')" id="playPauseBtn7">Play</button>
+          <button onclick="skip('audio7')">5s »</button>
+          <select onchange="changeSpeed('audio7', this.value)">
+            <option value="0.5">0.5x</option>
+            <option value="0.75">0.75x</option>
+            <option value="0.85">0.85x</option>
+            <option value="0.90">0.90x</option>
+            <option value="0.95">0.95x</option>
+            <option value="1" selected>1x</option>
+          </select>
+        </div>
+        <div class="progress">
+          <input type="range" id="progressBar7" value="0" step="0.1" min="0" max="100" onchange="seek('audio7', this.value)">
+          <div class="time" id="time7">0:00 / 0:00</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="audio-section audio-container" id="audioContainer8">
+      <div class="audio-player">
+        <audio id="audio8" src="8.mp3"></audio>
+        <div class="controls">
+          <button onclick="rewind('audio8')">« 5s</button>
+          <button onclick="playPause('audio8')" id="playPauseBtn8">Play</button>
+          <button onclick="skip('audio8')">5s »</button>
+          <select onchange="changeSpeed('audio8', this.value)">
+            <option value="0.5">0.5x</option>
+            <option value="0.75">0.75x</option>
+            <option value="0.85">0.85x</option>
+            <option value="0.90">0.90x</option>
+            <option value="0.95">0.95x</option>
+            <option value="1" selected>1x</option>
+          </select>
+        </div>
+        <div class="progress">
+          <input type="range" id="progressBar8" value="0" step="0.1" min="0" max="100" onchange="seek('audio8', this.value)">
+          <div class="time" id="time8">0:00 / 0:00</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="audio-section audio-container" id="audioContainer9">
+      <div class="audio-player">
+        <audio id="audio9" src="9.mp3"></audio>
+        <div class="controls">
+          <button onclick="rewind('audio9')">« 5s</button>
+          <button onclick="playPause('audio9')" id="playPauseBtn9">Play</button>
+          <button onclick="skip('audio9')">5s »</button>
+          <select onchange="changeSpeed('audio9', this.value)">
+            <option value="0.5">0.5x</option>
+            <option value="0.75">0.75x</option>
+            <option value="0.85">0.85x</option>
+            <option value="0.90">0.90x</option>
+            <option value="0.95">0.95x</option>
+            <option value="1" selected>1x</option>
+          </select>
+        </div>
+        <div class="progress">
+          <input type="range" id="progressBar9" value="0" step="0.1" min="0" max="100" onchange="seek('audio9', this.value)">
+          <div class="time" id="time9">0:00 / 0:00</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="audio-section audio-container" id="audioContainer10">
+      <div class="audio-player">
+        <audio id="audio10" src="10.mp3"></audio>
+        <div class="controls">
+          <button onclick="rewind('audio10')">« 5s</button>
+          <button onclick="playPause('audio10')" id="playPauseBtn10">Play</button>
+          <button onclick="skip('audio10')">5s »</button>
+          <select onchange="changeSpeed('audio10', this.value)">
+            <option value="0.5">0.5x</option>
+            <option value="0.75">0.75x</option>
+            <option value="0.85">0.85x</option>
+            <option value="0.90">0.90x</option>
+            <option value="0.95">0.95x</option>
+            <option value="1" selected>1x</option>
+          </select>
+        </div>
+        <div class="progress">
+          <input type="range" id="progressBar10" value="0" step="0.1" min="0" max="100" onchange="seek('audio10', this.value)">
+          <div class="time" id="time10">0:00 / 0:00</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="l2"></div>
+    <div class="l1"></div>
+    <!-- Lesson Content -->
+    <h2>Zero Conditional</h2>
+    <div class="l2"><strong>Usage:</strong> For facts or things that are always true.</div>
+    <div class="l1">Per fets o coses que sempre són veritat.</div>
+    <div class="l2"><strong>Tense Structure:</strong> If + Present Simple, Present Simple</div>
+    <div class="l1"><strong>Estructura verbal:</strong> Si + Present Simple, Present Simple</div>
+    <ul>
+      <li class="l2"><strong>Affirmative:</strong> "If people migrate, they adapt to new cultures."</li>
+      <li class="l1"><strong>Positiva:</strong> "Si la gent migra, s'adapta a noves cultures."</li>
+
+      <li class="l2"><strong>Negative:</strong> "If communities don't embrace diversity, tensions arise."</li>
+      <li class="l1"><strong>Negativa:</strong> "Si les comunitats no abracen la diversitat, sorgeixen tensions."</li>
+
+      <li class="l2"><strong>Question:</strong> "What happens if people move to a new country?"</li>
+      <li class="l1"><strong>Pregunta:</strong> "Què passa si la gent es trasllada a un nou país?"</li>
+    </ul>
+
+    <h2>First Conditional</h2>
+    <div class="l2"><strong>Usage:</strong> For real possibilities in the future.</div>
+    <div class="l1">Per a possibilitats reals en el futur.</div>
+    <div class="l2"><strong>Tense Structure:</strong> If + Present Simple, will + Base Form</div>
+    <div class="l1"><strong>Estructura verbal:</strong> Si + Present Simple, will + Forma Base</div>
+    <ul>
+      <li class="l2"><strong>Affirmative:</strong> "If I learn Spanish, I'll communicate better when I move to Spain."</li>
+      <li class="l1"><strong>Positiva:</strong> "Si aprenc espanyol, em comunicaré millor quan em mudi a Espanya."</li>
+
+      <li class="l2"><strong>Negative:</strong> "If we don't address climate change, more people will be forced to migrate."</li>
+      <li class="l1"><strong>Negativa:</strong> "Si no abordem el canvi climàtic, més gent es veurà obligada a migrar."</li>
+
+      <li class="l2"><strong>Question:</strong> "Will you migrate if you get that job offer abroad?"</li>
+      <li class="l1"><strong>Pregunta:</strong> "Migraràs si reps aquella oferta de treball a l'estranger?"</li>
+    </ul>
+
+    <h2>Second Conditional</h2>
+    <div class="l2"><strong>Usage:</strong> For unreal or hypothetical situations now or in the future.</div>
+    <div class="l1">Per a situacions irreals o hipotètiques en el present o futur.</div>
+    <div class="l2"><strong>Tense Structure:</strong> If + Past Simple, would + Base Form</div>
+    <div class="l1"><strong>Estructura verbal:</strong> Si + Past Simple, would + Forma Base</div>
+    <ul>
+      <li class="l2"><strong>Affirmative:</strong> "If I had a visa, I would move to Canada."</li>
+      <li class="l1"><strong>Positiva:</strong> "Si tingués un visat, em mudaria al Canadà."</li>
+
+      <li class="l2"><strong>Negative:</strong> "If globalization didn't exist, we wouldn't enjoy international cuisines."</li>
+      <li class="l1"><strong>Negativa:</strong> "Si la globalització no existís, no gaudiríem de cuines internacionals."</li>
+
+      <li class="l2"><strong>Question:</strong> "What would you do if you lived in another country?"</li>
+      <li class="l1"><strong>Pregunta:</strong> "Què faries si visquessis en un altre país?"</li>
+    </ul>
+
+    <h2>Third Conditional</h2>
+    <div class="l2"><strong>Usage:</strong> For unreal situations in the past.</div>
+    <div class="l1">Per a situacions irreals en el passat.</div>
+    <div class="l2"><strong>Tense Structure:</strong> If + Past Perfect, would have + Past Participle</div>
+    <div class="l1"><strong>Estructura verbal:</strong> Si + Past Perfect, would have + Participi Passat</div>
+    <ul>
+      <li class="l2"><strong>Affirmative:</strong> "If she had studied international law, she would have worked at the UN."</li>
+      <li class="l1"><strong>Positiva:</strong> "Si ella hagués estudiat dret internacional, hauria treballat a l'ONU."</li>
+
+      <li class="l2"><strong>Negative:</strong> "If they hadn't migrated, they wouldn't have experienced new cultures."</li>
+      <li class="l1"><strong>Negativa:</strong> "Si no haguessin migrat, no haurien experimentat noves cultures."</li>
+
+      <li class="l2"><strong>Question:</strong> "What would have happened if you hadn't moved abroad?"</li>
+      <li class="l1"><strong>Pregunta:</strong> "Què hauria passat si no t'haguessis mudat a l'estranger?"</li>
+    </ul>
+
+    <h2>Mixed Conditional</h2>
+    <div class="l2"><strong>Usage:</strong> Combines past and present situations.</div>
+    <div class="l1">Combina situacions passades i presents.</div>
+    <div class="l2"><strong>Tense Structure:</strong> If + Past Perfect, would + Base Form</div>
+    <div class="l1"><strong>Estructura verbal:</strong> Si + Past Perfect, would + Forma Base</div>
+    <ul>
+      <li class="l2"><strong>Affirmative:</strong> "If I had saved money, I would be traveling now."</li>
+      <li class="l1"><strong>Positiva:</strong> "Si hagués estalviat diners, estaria viatjant ara."</li>
+
+      <li class="l2"><strong>Negative:</strong> "If he hadn't left his country, he wouldn't be bilingual now."</li>
+      <li class="l1"><strong>Negativa:</strong> "Si no hagués deixat el seu país, no seria bilingüe ara."</li>
+
+      <li class="l2"><strong>Question:</strong> "If you had accepted that job overseas, where would you be living now?"</li>
+      <li class="l1"><strong>Pregunta:</strong> "Si haguessis acceptat aquella feina a l'estranger, on estaries vivint ara?"</li>
+    </ul>
+
+    <div class="l2"><strong>Summary:</strong> Conditionals help us talk about possibilities, imaginations, and consequences related to globalization and migration.</div>
+    <div class="l1"><strong>Resum:</strong> Els condicionals ens ajuden a parlar de possibilitats, imaginacions i conseqüències relacionades amb la globalització i la migració.</div>
+
+     <script>
+      // Function to toggle play/pause
+      function playPause(audioId) {
+        var audio = document.getElementById(audioId);
+        var playPauseBtn = document.getElementById('playPauseBtn' + audioId.slice(5));
+        if (audio.paused) {
+          audio.play();
+          playPauseBtn.textContent = 'Pause';
+        } else {
+          audio.pause();
+          playPauseBtn.textContent = 'Play';
+        }
+      }
+
+      // Function to rewind 5 seconds
+      function rewind(audioId) {
+        var audio = document.getElementById(audioId);
+        audio.currentTime = Math.max(0, audio.currentTime - 5);
+      }
+
+      // Function to skip forward 5 seconds
+      function skip(audioId) {
+        var audio = document.getElementById(audioId);
+        audio.currentTime = Math.min(audio.duration, audio.currentTime + 5);
+      }
+
+      // Function to change playback speed
+      function changeSpeed(audioId, speed) {
+        var audio = document.getElementById(audioId);
+        audio.playbackRate = parseFloat(speed);
+      }
+
+      // Function to update progress bar and time
+      function updateProgress(audioId, progressBarId, timeId) {
+        var audio = document.getElementById(audioId);
+        var progressBar = document.getElementById(progressBarId);
+        var timeDisplay = document.getElementById(timeId);
+        if (audio.duration) {
+          progressBar.value = (audio.currentTime / audio.duration) * 100;
+          timeDisplay.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+        }
+      }
+
+      // Function to format time in mm:ss
+      function formatTime(seconds) {
+        var minutes = Math.floor(seconds / 60);
+        var seconds = Math.floor(seconds % 60);
+        if (seconds < 10) {
+          seconds = '0' + seconds;
+        }
+        return minutes + ':' + seconds;
+      }
+
+      // Function to seek in the audio
+      function seek(audioId, value) {
+        var audio = document.getElementById(audioId);
+        audio.currentTime = (value / 100) * audio.duration;
+      }
+
+      // Initialize audio players
+      var maxMp3Files = 10;
+      for (var i = 1; i <= maxMp3Files; i++) {
+        (function(i) {
+          var audio = document.getElementById('audio' + i);
+          var audioContainer = document.getElementById('audioContainer' + i);
+
+          // Check if the audio file exists
+          audio.addEventListener('loadedmetadata', function() {
+            audioContainer.style.display = 'block'; // Show the audio player
+            updateProgress('audio' + i, 'progressBar' + i, 'time' + i);
+          });
+
+          audio.addEventListener('error', function() {
+            audioContainer.style.display = 'none'; // Hide the audio player if the file doesn't exist
+          });
+
+          // Other event listeners
+          audio.addEventListener('timeupdate', function() {
+            updateProgress('audio' + i, 'progressBar' + i, 'time' + i);
+          });
+
+          audio.addEventListener('ended', function() {
+            document.getElementById('playPauseBtn' + i).textContent = 'Play';
+          });
+
+          // Attempt to load the audio file
+          audio.load();
+        })(i);
+      }
+    </script>
+  </body>
+</html>
+  
